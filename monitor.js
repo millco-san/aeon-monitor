@@ -17,17 +17,16 @@ await page.goto(
   }
 );
 
-await page.waitForTimeout(5000);
-
 const products = await page.$$eval(
   ".product__item--name a",
-  els =>
-    els.map(el => ({
-      name: el.textContent.trim(),
-      url: el.href
+  links =>
+    links.map(link => ({
+      name: link.textContent.trim(),
+      url: new URL(link.getAttribute("href"), "https://aeonretail.com").href
     }))
 );
 
-console.log(JSON.stringify(products, null, 2));
+console.log("COUNT:", products.length);
+console.log(JSON.stringify(products.slice(0, 5), null, 2));
 
 await browser.close();
