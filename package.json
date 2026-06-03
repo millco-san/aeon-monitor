@@ -1,0 +1,8 @@
+{
+  "name": "aeon-monitor",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "playwright": "^1.54.0"
+  }
+}
